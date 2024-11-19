@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dashboard</title>
+  <!---Custom CSS File--->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    body {
+      background-color: lightsteelblue; /* Standard background color */
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #ffffff; /* Form background color */
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .options {
+      margin-top: 20px;
+    }
+
+    .options a {
+      display: block;
+      margin: 10px auto;
+      padding: 12px 24px;
+      width: 300px; /* Fixed width */
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50; /* Green */
+      color: white;
+      font-size: 18px;
+      text-decoration: none; /* Remove default underline */
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .options a:hover {
+      background-color: #45a049; /* Darker green */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome, {{ user.first_name }}</h1>
+    <div class="options">
+      <a href="{% url 'meeting' %}">New Meeting</a>
+      <a href="{% url 'join' %}">Join Meeting</a>
+      <a href="{% url 'logout' %}">Logout</a>
+    </div>
+  </div>
+</body>
+</html>

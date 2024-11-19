@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login</title>
+  <!---Custom CSS File--->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    body {
+      background-color: lightsteelblue; /* Standard background color */
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #ffffff; /* Form background color */
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .signup {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .signup a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .signup a:hover {
+      text-decoration: underline;
+    }
+
+    .alert-success {
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: #d4edda; /* Green background color */
+      color: #155724; /* Dark green text color */
+      font-size: 16px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="login form">
+      <header>Sign in</header>
+      {% if success %}
+      <div class="alert-success">
+        {{ success }}
+      </div>
+      {% endif %}
+      <form action="{% url 'dashboard' %}" method="post">
+          {% csrf_token %}
+          <input type="text" placeholder="Enter your username" name="email" required>
+          <input type="password" placeholder="Enter your password" name="password" required>
+          <input type="submit" value="Login">
+      </form>
+      <div class="signup">
+        Don't have an account? <a href="{% url 'register' %}">Sign up</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
